@@ -1,0 +1,19 @@
+- hosts: nodes
+  become: yes
+  tasks:
+    - name: docker
+      apt:
+        name: docker.io
+        state: latest
+        update_cache: yes
+
+    - name: docker-compose
+      apt:
+        name: docker-compose
+        state: latest
+        update_cache: yes
+
+    - name: user - group
+      user:
+        name: vagrant
+        groups: docker
